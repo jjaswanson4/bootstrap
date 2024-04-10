@@ -1,0 +1,17 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: portal-downloads
+  labels:
+    app.kubernetes.io/name: portal-downloads-route-{{ $.Release.Name }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+    app.kubernetes.io/part-of: bootstrap
+spec:
+  to:
+    kind: Service
+    name: portal-downloads-service
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge

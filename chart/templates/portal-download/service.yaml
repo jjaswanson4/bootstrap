@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-downloads-service
+  labels:
+    app.kubernetes.io/name: portal-downloads-service-{{ $.Release.Name }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+    app.kubernetes.io/part-of: bootstrap
+spec:
+  selector:
+    app.kubernetes.io/name: portal-downloads-{{ $.Release.Name }}
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
