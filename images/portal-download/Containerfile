@@ -1,0 +1,10 @@
+FROM ubi9/python-39
+
+USER 0
+ADD download-from-customer-portal.py /tmp/src
+RUN /usr/bin/fix-permissions /tmp/src
+USER 1001
+
+RUN /usr/libexec/s2i/assemble
+
+CMD /usr/libexec/s2i/run

@@ -1,0 +1,12 @@
+FROM ubi9:latest
+
+RUN mkdir /.docker
+RUN mkdir /opt/oc-mirror
+
+WORKDIR /opt/oc-mirror
+
+COPY run-oc-mirror.sh /usr/local/bin/run-oc-mirror
+
+RUN chmod +x /usr/local/bin/run-oc-mirror
+
+ENTRYPOINT ["/usr/local/bin/run-oc-mirror"]

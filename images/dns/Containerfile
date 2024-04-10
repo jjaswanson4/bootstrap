@@ -1,0 +1,26 @@
+FROM registry.access.redhat.com/ubi9/ubi-minimal
+
+ENV LC_ALL C.UTF-8
+
+USER root
+
+RUN microdnf -y install bind
+RUN rm -rf /var/cache/yum
+
+RUN mkdir -p /etc/bind && chown root:named /etc/bind/ && chmod 755 /etc/bind
+RUN mkdir -p /var/cache/bind && chown named:named /var/cache/bind && chmod 755 /var/cache/bind
+RUN mkdir -p /var/lib/bind && chown named:named /var/lib/bind && chmod 755 /var/lib/bind
+RUN mkdir -p /var/log/bind && chown named:named /var/log/bind && chmod 755 /var/log/bind
+RUN mkdir -p /run/named && chown named:named /run/named && chmod 755 /run/named
+
+VOLUME /etc/bind/named.conf
+VOLUME /etc/bind/files.zones
+VOLUME /etc/bind/forward.zone
+VOLUME /etc/bind/reverse.zone
+VOLUME /var/cache/bind
+VOLUME /var/lib/bind
+VOLUME /var/log
+
+EXPOSE 53/udp 53/tcp 953/tcp
+
+CMD ["/usr/sbin/named", "-f", "-c", "/etc/bind/named.conf", "-u", "named", "-g", "-d", "3"]
