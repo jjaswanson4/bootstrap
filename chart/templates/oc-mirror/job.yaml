@@ -29,7 +29,11 @@ spec:
               mountPath: /tmp/imagesetconfiguration.yaml
               subPath: imagesetconfiguration.yaml
             - name: run-oc-mirror-secrets
+              {{ if .Values.microshift }}
+              mountPath: /root/.docker
+              {{ else }}
               mountPath: /.docker
+              {{ end }}
             - name: oc-mirror-scratch
               mountPath: /opt/oc-mirror
       volumes:
