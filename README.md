@@ -20,6 +20,9 @@ Frequently, it's required to provide access to content and some core services to
 ## Setup
 The chart has an example values.yaml file that requires some confirugation (or override from the CLI) before deploying. Below are some more in-depth explanations on what can be configured.
 
+**Future, not yet complete**
+If you do not want a specific element deployed, simply undefine it in `values.yaml`.
+
 ### Microshift Specific Configuration
 If deploying to Microshift and intending to use DHCP, configure the following:
 ```yaml
@@ -91,14 +94,18 @@ dnfMirror:
     username: your-rhsm-username
     password: your-rhsm-password
   repos:
-    - name: baseos
-      id: rhel-9-for-x86_64-baseos-rpms
+    - name: baseos # Name of repo
+      id: rhel-9-for-x86_64-baseos-rpms # Repo ID
+      pvcSize: 10Gi # Amount of storage needed. Not required, defaults to 15Gi
     - name: appstream
       id: rhel-9-for-x86_64-appstream-rpms
+      pvcSize: 20Gi
     - name: rhocp
       id: rhocp-4.15-for-rhel-9-x86_64-rpms
+      pvcSize: 5Gi
     - name: fast-datapath
       id: fast-datapath-for-rhel-9-x86_64-rpms
+      pvcSize: 5Gi
 ```
 
 ### Customer Portal Content
