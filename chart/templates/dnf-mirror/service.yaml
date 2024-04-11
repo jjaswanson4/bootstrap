@@ -1,3 +1,4 @@
+{{ if .Values.dnfMirror }}
 {{- range .Values.dnfMirror.repos }}
 ---
 apiVersion: v1
@@ -16,3 +17,4 @@ spec:
       port: 8080
       targetPort: 8080
 {{- end }}
+{{ end }}

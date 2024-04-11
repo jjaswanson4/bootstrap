@@ -1,3 +1,4 @@
+{{ if .Values.dnfMirror }}
 {{- range .Values.dnfMirror.repos }}
 ---
 kind: Route
@@ -19,3 +20,4 @@ spec:
   tls:
     termination: edge
 {{- end }}
+{{ end }}

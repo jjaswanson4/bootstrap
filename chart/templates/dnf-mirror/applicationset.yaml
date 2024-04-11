@@ -1,3 +1,4 @@
+{{ if .Values.dnfMirror }}
 {{- range .Values.dnfMirror.repos }}
 ---
 apiVersion: apps/v1
@@ -63,3 +64,4 @@ spec:
           persistentVolumeClaim:
             claimName: {{ .name }}-repo-{{ $.Release.Name }}-pvc
 {{- end }}
+{{ end }}

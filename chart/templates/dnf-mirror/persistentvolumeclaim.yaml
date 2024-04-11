@@ -1,3 +1,4 @@
+{{ if .Values.dnfMirror }}
 {{- range .Values.dnfMirror.repos }}
 ---
 apiVersion: v1
@@ -13,8 +14,9 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 15Gi
+      storage: {{ .pvcSize | default "15Gi" }}
   {{ if $.Values.storageClass }}
   storageClassName: {{ $.Values.storageClass }}
   {{ end }}
 {{- end }}
+{{ end }}
