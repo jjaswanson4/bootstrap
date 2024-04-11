@@ -5,7 +5,7 @@
 microshift: true
 microshiftConfig:
   ipAddresses:
-    - 192.168.0.1 # Match to the LAN interface Address
+    - 192.168.0.1 # Match to the LAN interface address
 
 dhcp:
   interface: enp7s0 # Interface name of LAN address
@@ -55,12 +55,16 @@ dnfMirror:
   repos:
     - name: baseos
       id: rhel-9-for-x86_64-baseos-rpms
+      pvcSize: 10Gi
     - name: appstream
       id: rhel-9-for-x86_64-appstream-rpms
+      pvcSize: 20Gi
     - name: rhocp
       id: rhocp-4.15-for-rhel-9-x86_64-rpms
+      pvcSize: 5Gi
     - name: fast-datapath
       id: fast-datapath-for-rhel-9-x86_64-rpms
+      pvcSize: 5Gi
 
 customerPortalDownloads:
   offlineToken: 'your-offline-token'
