@@ -1,3 +1,4 @@
+{{ if .Values.dhcp }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -21,3 +22,4 @@ data:
     {{ if .Values.dhcp.interface }}
     interface={{ .Values.dhcp.interface }}
     {{ end }}
+{{ end }}
