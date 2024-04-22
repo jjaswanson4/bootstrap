@@ -1,3 +1,4 @@
+{{ if .Values.customerPortalDownloads }}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -63,3 +64,4 @@ spec:
         - name: customer-portal-downloads
           configMap:
             name: customer-portal-downloads-cm
+{{ end }}

@@ -1,3 +1,4 @@
+{{ if .Values.customerPortalDownloads }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -12,7 +13,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 15Gi
+      storage: 5Gi
   {{ if $.Values.storageClass }}
   storageClassName: {{ $.Values.storageClass }}
   {{ end }}
+{{ end }}

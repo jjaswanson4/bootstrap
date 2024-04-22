@@ -1,3 +1,4 @@
+{{ if .Values.customerPortalDownloads }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -10,3 +11,4 @@ data:
     - name: {{ .name }}
       sha256: {{ .sha256 }}
     {{- end }}
+{{ end }}
