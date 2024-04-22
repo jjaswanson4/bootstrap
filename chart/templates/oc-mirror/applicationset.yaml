@@ -1,3 +1,4 @@
+{{ if .Values.ocMirror }}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -39,3 +40,4 @@ spec:
         - name: registry-data
           persistentVolumeClaim:
             claimName: registry-{{ .Release.Name }}-pvc
+{{ end }}

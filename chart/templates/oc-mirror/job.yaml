@@ -1,3 +1,4 @@
+{{ if .Values.ocMirror }}
 ---
 apiVersion: batch/v1
 kind: Job
@@ -46,3 +47,4 @@ spec:
         - name: run-oc-mirror-secrets
           secret:
             secretName: run-oc-mirror-configjson-secret
+{{ end }}

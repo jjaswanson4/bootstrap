@@ -1,3 +1,4 @@
+{{ if .Values.ocMirror }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -12,7 +13,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 50Gi
+      storage: 30Gi
   {{ if .Values.storageClass }}
   storageClassName: {{ .Values.storageClass }}
   {{ end }}
@@ -34,3 +35,4 @@ spec:
   {{ if .Values.storageClass }}
   storageClassName: {{ .Values.storageClass }}
   {{ end }}
+{{ end }}
