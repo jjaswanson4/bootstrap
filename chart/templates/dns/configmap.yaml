@@ -1,3 +1,4 @@
+{{ if .Values.dns }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -66,3 +67,4 @@ data:
     {{ .record }}     IN      {{ .type }}     {{ .value }}.{{ $.Values.dns.forwardZone }}.
     {{- end }}
     {{ end }}
+{{ end }}

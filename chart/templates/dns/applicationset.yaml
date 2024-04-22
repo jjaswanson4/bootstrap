@@ -1,3 +1,4 @@
+{{ if .Values.dns }}
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -44,3 +45,4 @@ spec:
         - name: dns-config-volume
           configMap:
             name: dns-configmap
+{{ end }}
