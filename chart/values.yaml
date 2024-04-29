@@ -15,6 +15,8 @@ dhcp:
   dnsServer: 192.168.0.1 # Should match the LAN address
 
 dns:
+  listenAddress: 192.168.0.1 # What address to listen on
+  hostNetwork: true # If host network should be used
   forwardZone: example.domain.lcl
   reverseZone: 0.168.192.in-addr.arpa
   forwarders:
