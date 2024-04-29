@@ -23,4 +23,4 @@ VOLUME /var/log
 
 EXPOSE 53/udp 53/tcp 953/tcp
 
-CMD ["/usr/sbin/named", "-f", "-c", "/etc/bind/named.conf", "-u", "named", "-g", "-d", "3"]
+CMD ["/usr/sbin/named", "-f", "-c", "/etc/named/named.conf", "-u", "named", "-g", "-d", "3"]
