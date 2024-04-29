@@ -31,7 +31,7 @@ spec:
       hostNetwork: true
       containers:
         - name: dns
-          image: quay.io/jswanson/dns:1.0.0
+          image: quay.io/jswanson/dns:1.0.1
           securityContext:
             privileged: true
           ports:
@@ -39,7 +39,7 @@ spec:
               name: dns-port
           volumeMounts:
             - name: dns-config-volume
-              mountPath: /etc/bind
+              mountPath: /etc/named
               readOnly: true
       volumes:
         - name: dns-config-volume

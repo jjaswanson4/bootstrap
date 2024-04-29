@@ -22,7 +22,7 @@ data:
             {{- end }}
             };
     };
-    include "/etc/bind/files.zones";
+    include "/etc/named/files.zones";
   files.zones: |
     // forward
     zone "{{ .Values.dns.forwardZone }}" IN {
@@ -46,6 +46,7 @@ data:
                             604800 );       ; Negative Cache TTL
     ;
                 IN NS   dns.{{ .Values.dns.forwardZone }}.
+    dns IN A {{ .Values.dns.listenAddress }}
     {{ if .Values.dns.forwardRecords }}
     {{- range .Values.dns.forwardRecords }}
     {{ .record }} IN {{ .type }} {{ .value }}

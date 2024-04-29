@@ -1,4 +1,5 @@
 {{ if .Values.dns }}
+{{ if not .Values.dns.hostNetwork }}
 ---
 apiVersion: v1
 kind: Service
@@ -12,4 +13,5 @@ spec:
     - protocol: UDP
       port: 53
       targetPort: 53
+{{ end }}
 {{ end }}
