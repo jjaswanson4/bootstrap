@@ -39,11 +39,12 @@ data:
   forward.zone: |
     $TTL    86400
     @	 IN	SOA	dns.{{ .Values.dns.forwardZone }}. admin.{{ .Values.dns.forwardZone }}. (
-                                  3         ; Serial
-                            604800         ; Refresh
-                              86400         ; Retry
-                            2419200         ; Expire
-                            604800 )       ; Negative Cache TTL
+                            3       ; Serial
+                            604800  ; Refresh
+                            86400   ; Retry
+                            2419200 ; Expire
+                            604800  ; Negative Cache TTL
+                            )
     ;
                 IN NS   dns.{{ .Values.dns.forwardZone }}.
     dns IN A {{ .Values.dns.listenAddress }}
