@@ -43,7 +43,7 @@ data:
                             604800         ; Refresh
                               86400         ; Retry
                             2419200         ; Expire
-                            604800 );       ; Negative Cache TTL
+                            604800 )       ; Negative Cache TTL
     ;
                 IN NS   dns.{{ .Values.dns.forwardZone }}.
     dns IN A {{ .Values.dns.listenAddress }}
