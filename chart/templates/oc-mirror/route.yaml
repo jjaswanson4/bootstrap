@@ -3,12 +3,17 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: registry-route-{{ .Release.Name }}
+  name: registry
+  labels:
+    app.kubernetes.io/name: registry-{{ $.Release.Name }}
+    app.kubernetes.io/instance: {{ $.Release.Name }}
+    app.kubernetes.io/part-of: bootstrap
 spec:
-  host: registry-{{ .Release.Name }}
-  port:
-    targetPort: 5000
   to:
     kind: Service
-    name: registry-service-{{ .Release.Name }}
+    name: registry
+  port:
+    targetPort: 5000
+  tls:
+    termination: edge
 {{ end }}
