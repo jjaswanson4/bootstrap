@@ -31,7 +31,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: {{ .Values.ocMirror.pvcSize | default "10Gi "}}
   {{ if .Values.storageClass }}
   storageClassName: {{ .Values.storageClass }}
   {{ end }}
