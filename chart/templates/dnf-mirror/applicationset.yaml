@@ -40,7 +40,7 @@ spec:
               mountPath: /var/www/html
       initContainers:
         - name: sync-repo-{{ .name }}
-          image: quay.io/jswanson/dnf-mirror:1.0.1
+          image: quay.io/jswanson/dnf-mirror:latest
           securityContext:
             runAsUser: 0
           volumeMounts:
