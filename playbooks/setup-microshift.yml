@@ -1,0 +1,43 @@
+---
+
+- name: Setup Microshift for bootstrap
+  hosts:
+    - all
+  become: true
+  tasks:
+    - name: Setup local storage
+      community.general.lvg:
+        vg: "{{ microshiftConfig.storage.volumeGroupName }}"
+        pvs: "{{ microshiftConfig.storage.devices }}"
+      notify:
+        - restart_microshift
+    - name: Push storage configuration
+      ansible.builtin.template:
+        src: templates/lvmd.yaml.j2
+        dest: /etc/microshift/lvmd.yaml
+      notify:
+        - restart_microshift
+    - name: Push microshift configuration
+      ansible.builtin.template:
+        src: templates/config.yaml.j2
+        dest: /etc/microshift/config.yaml
+      notify:
+        - restart_microshift
+    - name: Push ovn configuration
+      ansible.builtin.template:
+        src: templates/ovn.yaml.j2
+        dest: /etc/microshift/ovn.yaml
+      notify:
+        - restart_microshift
+    - name: Enable/start microshift
+      ansible.builtin.systemd:
+        name: microshift
+        state: started
+        enabled: true
+  handlers:
+    - name: Restart Microshift
+      ansible.builtin.systemd:
+        name: microshift
+        state: restarted
+      listen:
+        - restart_microshift
