@@ -1,2 +1,5 @@
 .vscode
 *-values.yaml
+tmp/
+.venv
+inventory.yml
