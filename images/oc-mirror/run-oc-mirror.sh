@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Part 1 - Get oc-mirror command
-curl https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/oc-mirror.tar.gz -o oc-mirror.tar.gz
+curl https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/mirror-registry/latest/mirror-registry.tar.gz -o oc-mirror.tar.gz
 tar -xzvf oc-mirror.tar.gz
 chmod +x oc-mirror
 
