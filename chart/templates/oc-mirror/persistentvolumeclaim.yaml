@@ -13,9 +13,9 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 30Gi
-  {{ if .Values.storageClass }}
-  storageClassName: {{ .Values.storageClass }}
+      storage: {{ .Values.ocMirror.registryPvc.size | default "30Gi" }}
+  {{ if .Values.ocMirror.registryPvc.storageClass }}
+  storageClassName: {{ .Values.ocMirror.registryPvc.storageClass }}
   {{ end }}
 ---
 apiVersion: v1
@@ -31,8 +31,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.ocMirror.pvcSize | default "10Gi "}}
-  {{ if .Values.storageClass }}
-  storageClassName: {{ .Values.storageClass }}
+      storage: {{ .Values.ocMirror.scratchPvc.size | default "10Gi" }}
+  {{ if .Values.ocMirror.scratchPvc.storageClass }}
+  storageClassName: {{ .Values.ocMirror.scratchPvc.storageClass }}
   {{ end }}
 {{ end }}
