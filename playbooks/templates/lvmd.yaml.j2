@@ -1,0 +1,7 @@
+---
+socket-name: /run/lvmd/lvmd.socket
+device-classes:
+  - name: {{ microshiftConfig.storage.storageClassName }}
+    volume-group: {{ microshiftConfig.storage.volumeGroupName }}
+    spare-gb: {{ microshiftConfig.storage.spareGb | default('0') }}
+    default: {{ microshiftConfig.storage.default | default(true) }}
