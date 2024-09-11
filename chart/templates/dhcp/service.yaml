@@ -1,4 +1,5 @@
 {{ if .Values.dhcp }}
+{{ if .Values.dhcp.createService }}
 ---
 apiVersion: v1
 kind: Service
@@ -12,4 +13,5 @@ spec:
     - protocol: UDP
       port: 67
       targetPort: 67
+{{ end }}
 {{ end }}
