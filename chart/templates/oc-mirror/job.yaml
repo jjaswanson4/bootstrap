@@ -28,9 +28,9 @@ spec:
             - name: REGISTRY
               value: registry.{{ .Release.Namespace }}.svc.cluster.local:5000
             - name: DEST_USE_HTTP
-              value: {{ .values.ocMirror.destUseHttp | default false }}
+              value: {{ .Values.ocMirror.destUseHttp | default false }}
             - name: DEST_SKIP_TLS
-              value: {{ .values.ocMirror.destSkipTls | default false }}
+              value: {{ .Values.ocMirror.destSkipTls | default false }}
           volumeMounts:
             - name: run-oc-mirror-configs
               mountPath: /tmp/imagesetconfiguration.yaml
