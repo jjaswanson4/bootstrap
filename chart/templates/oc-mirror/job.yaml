@@ -21,10 +21,16 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: run-oc-mirror
-          image: quay.io/jswanson/run-oc-mirror:1.0.2
+          image: quay.io/jswanson/run-oc-mirror:1.0.3
           env:
             - name: NAMESPACE
               value: "{{ .Release.Namespace }}"
+            - name: REGISTRY
+              value: registry.{{ .Release.Namespace }}.svc.cluster.local:5000
+            - name: DEST_USE_HTTP
+              value: {{ .values.ocMirror.destUseHttp | default false }}
+            - name: DEST_SKIP_TLS
+              value: {{ .values.ocMirror.destSkipTls | default false }}
           volumeMounts:
             - name: run-oc-mirror-configs
               mountPath: /tmp/imagesetconfiguration.yaml
