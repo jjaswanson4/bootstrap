@@ -47,7 +47,9 @@ data:
                             )
     ;
                 IN NS   dns.{{ .Values.dns.forwardZone }}.
-    dns IN A {{ .Values.dns.listenAddress }}
+{{ range .Values.dns.listenAddresses }}
+    dns IN A {{ . }}
+{{ end }}
     {{ if .Values.dns.forwardRecords }}
     {{- range .Values.dns.forwardRecords }}
     {{ .record }} IN {{ .type }} {{ .value }}
