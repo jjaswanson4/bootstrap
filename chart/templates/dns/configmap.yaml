@@ -8,7 +8,7 @@ data:
   named.conf: |
     options {
             {{ if .Values.microshift }}
-            listen-on port 53 { {{ .Values.microshiftConfig.ipAddresses | join "; " }}; };
+            listen-on port 53 { {{ .Values.dns.listenAddresses | join "; " }}; };
             {{ else }}
             listen-on port 53 { 0.0.0.0; };
             {{ end }}
