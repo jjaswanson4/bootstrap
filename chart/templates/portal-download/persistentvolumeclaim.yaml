@@ -13,8 +13,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
-  {{ if $.Values.storageClass }}
-  storageClassName: {{ $.Values.storageClass }}
+      storage: {{ .Values.customerPortalDownloads.storage.size | default "5Gi" }}
+  {{ if .Values.customerPortalDownloads.storage.class }}
+  storageClassName: {{ .Values.customerPortalDownloads.storage.class }}
   {{ end }}
 {{ end }}
